@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import RoutesProvider from "./routes";
 
 const App = () => {
   return (
     <div>
-      <p>halo</p>
+      <RoutesProvider />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
