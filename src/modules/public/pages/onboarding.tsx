@@ -2,8 +2,10 @@ import BackButton from "../components/common/back-button";
 import { cn } from "@/lib/utils";
 import { onboardingList } from "../constants/onboarding-list";
 import CommonButton from "@/components/common/button/common-button";
+import { useNavigate } from "react-router-dom";
 
 const OnBoarding = () => {
+  const navigate = useNavigate();
   return (
     <>
       <BackButton />
@@ -36,6 +38,7 @@ const OnBoarding = () => {
                 <CommonButton
                   label={item.btnLabel}
                   className="bg-secondary hover:bg-secondary text-white h-11 px-8"
+                  onClick={() => navigate(item.navigate)}
                 />
               </div>
               <div className="absolute bottom-4 left-0 right-0 flex flex-col ms-4 text-white opacity-100 group-hover:opacity-0">
