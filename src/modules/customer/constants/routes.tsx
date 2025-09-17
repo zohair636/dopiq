@@ -1,6 +1,6 @@
 export const CUSTOMER_ROUTES = [
   {
-    path: "/",
+    index: true,
     element: "",
   },
   {

@@ -162,7 +162,7 @@ h4 {
 }
 
 p {
-  @apply text-[min(4vw,16px)] font-DM-Sans text-dark-gray;
+  @apply text-[min(4vw,16px)] font-DM-Sans;
 }
 
 .heading {
