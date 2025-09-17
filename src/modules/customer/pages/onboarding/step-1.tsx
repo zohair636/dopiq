@@ -4,31 +4,34 @@ import {
 } from "@/components/common/form-provider/form-provider";
 import CommonInput from "@/components/common/input/common-input";
 import { GallerySvg } from "@/constants/icons";
-import { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 const Step_1 = () => {
-  const [uploadImage, setUploadImage] = useState(null);
-  const uploadImageRef = useRef(null);
+  const [uploadImage, setUploadImage] = useState<File | null>(null);
+  const uploadImageRef = useRef<HTMLInputElement | null>(null);
 
-  const handleUploadImage = (e) => {
-    const file = e.target.files[0];
-    setUploadImage(file);
+  const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setUploadImage(file);
+    }
   };
 
-  useEffect(() => {
-    if (uploadImageRef.current) {
-      uploadImageRef.current.focus();
-    }
-  }, []);
+  const handleFileUpload = () => {
+    uploadImageRef.current?.click();
+  };
   return (
-    <div className="mt-10">
+    <div>
       <h2 className="text-2xl font-DM-Sans text-dark-gray font-semibold mb-0.5">
         Welcome! Let's get started
       </h2>
       <h6 className="text-sm font-DM-Sans text-neutral-500">
         Select at least one skill that best represents your experience
       </h6>
-      <div className="flex flex-col gap-2 mt-4 cursor-pointer">
+      <div
+        onClick={handleFileUpload}
+        className="flex flex-col gap-2 mt-4 cursor-pointer"
+      >
         <div className="flex items-center justify-center bg-primary rounded-full p-3 size-14">
           <img
             src={uploadImage ? URL.createObjectURL(uploadImage) : GallerySvg}
@@ -38,9 +41,11 @@ const Step_1 = () => {
         </div>
         <p className="text-secondary">Upload your photo</p>
         <CommonInput
+          ref={uploadImageRef}
           type="file"
-          onChange={(e) => handleUploadImage(e)}
+          onChange={handleUploadImage}
           className="hidden"
+          accept="image/*"
         />
       </div>
       <FormProvider

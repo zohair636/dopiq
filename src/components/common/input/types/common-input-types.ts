@@ -1,11 +1,6 @@
-import type { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
+import type { InputHTMLAttributes } from "react";
 
-export type CommonInputProps = {
+export interface CommonInputProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  placeholder: string;
-  type?: HTMLInputTypeAttribute;
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  disabled?: boolean;
-  className?: string;
-};
+}

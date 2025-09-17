@@ -1,7 +1,6 @@
 import { Progress } from "@/components/ui/progress";
 import { useState, type FC } from "react";
 import type { OnboardingLayoutProps } from "./types/onboarding-layout-types";
-import { Button } from "@/components/ui/button";
 import Step_1 from "@/modules/customer/pages/onboarding/step-1";
 import Step_2 from "@/modules/customer/pages/onboarding/step-2";
 import Step_3 from "@/modules/customer/pages/onboarding/step-3";
@@ -51,27 +50,29 @@ const OnboardingLayout: FC<OnboardingLayoutProps> = () => {
         value={stepValues[currentStep]}
         className="bg-neutral-200 my-6"
       />
-      {currentStep === 1 && <Step_1 />}
-      {currentStep === 2 && <Step_2 />}
-      {currentStep === 3 && <Step_3 />}
-      {currentStep === 4 && <Step_4 />}
-      {currentStep === 5 && <Step_5 />}
-      {currentStep === 6 && <Step_6 />}
-      <div className="flex justify-between items-center mt-4">
+      <div className="mt-10">
+        {currentStep === 1 && <Step_1 />}
+        {currentStep === 2 && <Step_2 />}
+        {currentStep === 3 && <Step_3 />}
+        {currentStep === 4 && <Step_4 />}
+        {currentStep === 5 && <Step_5 />}
+        {currentStep === 6 && <Step_6 />}
+      </div>
+      <div className="flex justify-between items-center mt-12">
         <CommonButton
           variant="ghost"
           label="Back"
           leftIcon={<ArrowLeft />}
           onClick={handlePrevSteps}
           disabled={currentStep === 1}
-          className="border border-[#DEDEDE] text-dark-gray"
+          className="border border-[#DEDEDE] text-dark-gray h-11 w-28"
         />
         <CommonButton
           label="Continue"
           rightIcon={<ArrowRight />}
           onClick={handleNextSteps}
           disabled={currentStep === totalSteps}
-          className="bg-secondary hover:bg-secondary/90"
+          className="bg-gradient-to-tr from-[#004999] to-[#007AFF] h-11 w-32"
         />
       </div>
     </div>

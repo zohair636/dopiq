@@ -28,7 +28,7 @@ const CommonButton: FC<CommonButtonProps> = ({
       disabled={disabled}
       onClick={onClick}
       className={cn(
-        "flex cursor-pointer items-center gap-2",
+        "flex cursor-pointer items-center gap-4",
         "rounded-full",
         className
       )}
